@@ -1,0 +1,28 @@
+{
+    "remotePath": "./nixh.kl.com.ua",
+    "host": "nixh.kl.com.ua",
+    "username": "swich",
+    "password": "frSukCeAvk28",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        ".vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            "php"
+        ],
+        "path": "",
+        "uploadOnSave": true
+    }
+}

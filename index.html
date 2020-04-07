@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/imgs/logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#323234">
+    <style>.cbalink{display: none;}</style>
+    <meta charset="UTF-8">
+    <title>NIXH</title>
+
+    <script src="libs/p5.js"></script>
+    <script src="libs/jquery.js"></script>
+
+    <script src="scripts/sketch.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var sound = new Audio("res/music.mp3");
+            var video = document.getElementById("video");
+
+            let count = 0;
+            let is = false;
+
+            $("#text").keyup(function (e) {
+                if (e.keyCode == 13) {
+                    let text = $("#text").val();
+                    if (text != "") {
+                        $("#text").val("");
+
+                        if (text == "tZvpXW") {
+
+                            $("#text").css('visibility', 'hidden');
+                            $("#username").css('visibility', 'hidden');
+                            $("#logout").css('visibility', 'hidden');
+                            $("#logo").addClass("rotating");
+
+                            is = true;
+
+                            sound.play();
+
+                        }
+
+                    }
+                }
+            });
+
+            $("#center-div").click(function () {
+
+                if (is) {
+
+                    count++;
+
+                    let n = Math.random() * count;
+
+                    if (n > 4) {
+                        $("#logo").hide();
+                        setTimeout(function () {
+                            $("#logo").show();
+                        }, 40);
+                    }
+
+                    if (n > 10) {
+                        $("body").css('background-color', 'black');
+                        setTimeout(function () {
+                            $("body").css('background-color', '#17181c');
+                        }, 70);
+                    }
+
+                    if (n > 30) {
+
+                        is = false;
+
+                        if (video.requestFullscreen) {
+                            video.requestFullscreen();
+                        } else if (video.mozRequestFullScreen) {
+                            video.mozRequestFullScreen();
+                        } else if (video.webkitRequestFullscreen) {
+                            video.webkitRequestFullscreen();
+                        } else if (video.msRequestFullscreen) {
+                            video.msRequestFullscreen();
+                        }
+
+                        $("#video").show();
+
+                        sound.pause()
+                        video.play();
+
+                        setInterval(function () {
+                            video.play();
+                        }, 200);
+
+                    }
+
+                }
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="code"></div>
+
+    <div id="display" class="absolute-center">
+        <img src="imgs/logo.svg" id="logo">
+    </div>
+
+    <div id="center-div" class="absolute-center"></div>
+    <input type="text" id="text" class="absolute-center">
+
+    <video id="video" loop style="display: none;" class="absolute-center" width="40%">
+        <source src="res/video.mp4" type="video/mp4">
+    </video>
+
+</body>
+
+</html>
